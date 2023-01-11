@@ -1,0 +1,50 @@
+.map{
+    display: flex;
+    flex-wrap: wrap;
+    width: calc(100vw - 40px);
+    height: calc(100vh - 56px);
+    /*width: 100vw;*/
+    /*height: 100%;*/
+    overflow: hidden;
+    padding: 66px 20px 20px;
+    /*margin-top: 56px;*/
+    position: fixed;
+    background-image: url("https://wsqckonnaqawhrefbujn.azureedge.net/assets/images/205ec5.jpg");
+}
+
+.map>div{
+    width: calc(100% / 16);
+    height: calc(100% / 16);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .2s;
+}
+
+.star{
+    cursor: pointer;
+    transition: .2s;
+}
+.map>div:hover .star{
+    scale: 1.5;
+}
+
+.RED{
+    box-shadow: 0 0 10px #B0322E, 0 0 30px #F0443E, 0 0 80px #FF4842;
+    background-color: #B0322E;
+}
+.DEFAULT{
+    box-shadow: 0 0 10px #FFDA33, 0 0 30px #F0CD30, 0 0 80px #B39824;
+    background-color: #FFDA33;
+}
+.BLUE{
+    box-shadow: 0 0 10px #5271FF, 0 0 30px #4D6BF0, 0 0 80px #3950B3;
+    background-color: #5271FF;
+}
+.GREEN{
+    box-shadow: 0 0 10px #00FF5E, 0 0 30px #00D64F, 0 0 80px #00B343;
+    background-color: #00FF5E;
+}
+.HIDE{
+    display: none;
+}
