@@ -5,7 +5,7 @@
     height: calc(100vh);
     box-sizing: border-box;
     overflow: hidden;
-    padding: 66px 20px 20px;
+    padding: 66px 20px 66px;
     /*margin-top: 56px;*/
     position: fixed;
     background-image: url("https://wsqckonnaqawhrefbujn.azureedge.net/assets/images/205ec5.jpg");

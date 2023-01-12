@@ -32,7 +32,7 @@ const Map = ({sector, setCoordinates}: props) => {
 
     return <div className={'map'}>
         {systems.map((x, i) => x.map(((x, j) =>
-            <div onClick={() => setCoordinates(x.split(':')[0].slice(0, 3), x.split(':')[1].slice(0, 3))}>
+            <div key={`${i}:${j}`} onClick={() => setCoordinates(x.split(':')[0].slice(0, 3), x.split(':')[1].slice(0, 3))}>
                 {x.indexOf(':') > -1 && x}
                 {x.indexOf(':') === -1 && <div
                     className={'star ' + x}
