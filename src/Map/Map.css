@@ -1,10 +1,9 @@
 .map{
-    display: flex;
-    flex-wrap: wrap;
-    width: calc(100vw - 40px);
-    height: calc(100vh - 56px);
-    /*width: 100vw;*/
-    /*height: 100%;*/
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    width: calc(100vw);
+    height: calc(100vh);
+    box-sizing: border-box;
     overflow: hidden;
     padding: 66px 20px 20px;
     /*margin-top: 56px;*/
@@ -13,12 +12,20 @@
 }
 
 .map>div{
-    width: calc(100% / 16);
-    height: calc(100% / 16);
+    width: calc(100%);
+    height: calc(100%);
     display: flex;
     justify-content: center;
     align-items: center;
     transition: .2s;
+    color: #fff;
+}
+
+@media (max-width: 640px) {
+    .map>div {
+        border: 1px white dashed;
+        font-size: 0;
+    }
 }
 
 .star{

@@ -12,8 +12,10 @@ import {
 import {useState} from "react";
 import {Icon24Filter} from "@vkontakte/icons";
 
+const tg = (window as any).Telegram.Webapp
+
 function App() {
-    const [coordinates, setCoordinates] = useState<[string, string]>(['ABA', 'BAB'])
+    const [coordinates, setCoordinates] = useState<[string, string]>(['', ''])
     const [activeModal, setActiveModal] = useState<string>('main')
     const [showSnackBar, setShowSnackBar] = useState(false)
 
@@ -26,7 +28,7 @@ function App() {
                             <PanelHeader before={<PanelHeaderButton onClick={() => setActiveModal('filter')}>
                                 <Icon24Filter/>
                             </PanelHeaderButton>} separator={false}>Галактическая карта</PanelHeader>
-                            <Map sector={coordinates}/>
+                            <Map sector={coordinates} setCoordinates={(x, y) => setCoordinates([x, y])}/>
                         </Panel>
                         <Panel id={'filter'} style={{minHeight: '100vh'}}>
                             <PanelHeader before={<PanelHeaderBack onClick={() => {
