@@ -26,6 +26,10 @@
         border: 1px white dashed;
         font-size: 0;
     }
+    .map>div:has(.star) {
+        border: 0;
+        font-size: 0;
+    }
 }
 
 .star{

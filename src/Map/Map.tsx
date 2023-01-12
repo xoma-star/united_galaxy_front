@@ -27,6 +27,7 @@ const Map = ({sector, setCoordinates}: props) => {
            }
            setSystems(a)
        }
+       navigator.vibrate(10)
     }, [sector])
     const random = seedrandom(sector.join(':'))
 
