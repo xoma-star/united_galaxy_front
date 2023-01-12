@@ -42,10 +42,13 @@ const Map = ({sector, setCoordinates}: props) => {
                 onClick={() => {
                     if(sector[0].length === 3 && sector[1].length === 3) {
                         tg.MainButton.setParams({
-                            text: 'Информация о системе'
+                            text: `Информация о системе (${x})`
                         })
                         tg.MainButton.show()
-                        tg.MainButton.onClick(() => tg.sendData(JSON.stringify({command: 'travel', coordinates: x})))
+                        tg.MainButton.onClick(async () => {
+                            await tg.sendData(JSON.stringify({command: 'travel', coordinates: x}))
+                            tg.close()
+                        })
                     }
                     else setCoordinates(x.split(':')[0].slice(0, 3), x.split(':')[1].slice(0, 3))
                 }}
