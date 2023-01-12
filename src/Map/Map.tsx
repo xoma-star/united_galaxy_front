@@ -48,7 +48,7 @@ const Map = ({sector, setCoordinates}: props) => {
                         if(x !== 'HIDE'){
                             tg.MainButton.show()
                             tg.MainButton.onClick = () => {
-                                tg.sendData(JSON.stringify({command: 'travel', coordinates: a}))
+                                console.log(tg.sendData(JSON.stringify({command: 'travel', coordinates: a})))
                             }
                         }
                         else{
