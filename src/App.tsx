@@ -19,6 +19,10 @@ function App() {
     const [activeModal, setActiveModal] = useState<string>('main')
     const [showSnackBar, setShowSnackBar] = useState(false)
 
+    const openSystemOverview = () => {
+        setActiveModal('systemOverview')
+    }
+
     return <div>
         <ConfigProvider appearance={"light"} platform={Platform.IOS}>
             <AdaptivityProvider>
@@ -36,6 +40,9 @@ function App() {
                                 appearance={'overlay'}
                                 onClick={() => setCoordinates((s) =>[s[0].slice(0, -1), s[1].slice(0, -1)])}
                             >{coordinates.join(':')} (наверх)</Button>
+                        </Panel>
+                        <Panel id={'systemOverview'}>
+                            <PanelHeader before={<PanelHeaderBack onClick={() => {setActiveModal('main')}}/>}/>
                         </Panel>
                         <Panel id={'filter'} style={{minHeight: '100vh'}}>
                             <PanelHeader before={<PanelHeaderBack onClick={() => {
