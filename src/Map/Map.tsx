@@ -10,7 +10,7 @@ interface props{
 const Map = ({sector}: props) => {
     const [systems, setSystems] = useState<string[][]>([])
     useEffect(() => {
-        axios.get('http://localhost:3000/getSectorValidSystems', {params: {
+        axios.get('https://api.xoma-stark.tk/getSectorValidSystems', {params: {
             sector: sector.join(':')
         }}).then(r => setSystems(r.data))
     }, [sector])
