@@ -49,7 +49,7 @@ const Map = ({sector, setCoordinates}: props) => {
                             tg.MainButton.show()
                             tg.MainButton.onClick = () => {
                                 tg.sendData(JSON.stringify({command: 'travel', coordinates: a}))
-                                tg.close()
+                                // tg.close()
                             }
                         }
                         else{
