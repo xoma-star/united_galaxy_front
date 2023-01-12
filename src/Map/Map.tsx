@@ -9,7 +9,7 @@ interface props{
 }
 
 //@ts-ignore
-const tg = window.Telegram.Webapp
+const tg = window.Telegram.WebApp
 
 const Map = ({sector, setCoordinates}: props) => {
     const [systems, setSystems] = useState<string[][]>([])
