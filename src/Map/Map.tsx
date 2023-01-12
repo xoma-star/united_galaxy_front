@@ -45,11 +45,16 @@ const Map = ({sector, setCoordinates}: props) => {
                         tg.MainButton.setParams({
                             text: `Информация о системе (${a})`
                         })
-                        tg.MainButton.show()
-                        tg.MainButton.onClick(async () => {
-                            await tg.sendData(JSON.stringify({command: 'travel', coordinates: a}))
-                            tg.close()
-                        })
+                        if(x !== 'HIDE'){
+                            tg.MainButton.show()
+                            tg.MainButton.onClick(async () => {
+                                await tg.sendData(JSON.stringify({command: 'travel', coordinates: a}))
+                                tg.close()
+                            })
+                        }
+                        else{
+                            tg.MainButton.hide()
+                        }
                     }
                     else setCoordinates(x.split(':')[0].slice(0, 3), x.split(':')[1].slice(0, 3))
                 }}
