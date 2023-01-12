@@ -3,13 +3,14 @@ import {useEffect, useState} from "react";
 import seedrandom from 'seedrandom'
 import axios from "axios";
 
-const colors = ['blue', 'red', 'green', 'yellow']
+interface props{
+    sector: [string, string]
+}
 
-const Map = () => {
-    const [sector, setSector] = useState(['ABA', 'BAB'])
+const Map = ({sector}: props) => {
     const [systems, setSystems] = useState<string[][]>([])
     useEffect(() => {
-        axios.get('https://api.xoma-star.tk/getSectorValidSystems', {params: {
+        axios.get('http://localhost:3000/getSectorValidSystems', {params: {
             sector: sector.join(':')
         }}).then(r => setSystems(r.data))
     }, [sector])

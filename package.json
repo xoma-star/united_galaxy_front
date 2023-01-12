@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vkontakte/icons": "^2.4.0",
     "@vkontakte/vkui": "^4.41.0",
     "axios": "^1.2.2",
     "leaflet": "^1.9.3",
