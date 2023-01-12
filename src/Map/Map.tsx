@@ -41,12 +41,13 @@ const Map = ({sector, setCoordinates}: props) => {
                 key={`${i}:${j}`}
                 onClick={() => {
                     if(sector[0].length === 3 && sector[1].length === 3) {
+                        const a = `${sector[0]}${j.toString(16)}:${sector[1]}${i.toString(16)}`.toUpperCase()
                         tg.MainButton.setParams({
-                            text: `Информация о системе (${x})`
+                            text: `Информация о системе (${a})`
                         })
                         tg.MainButton.show()
                         tg.MainButton.onClick(async () => {
-                            await tg.sendData(JSON.stringify({command: 'travel', coordinates: x}))
+                            await tg.sendData(JSON.stringify({command: 'travel', coordinates: a}))
                             tg.close()
                         })
                     }

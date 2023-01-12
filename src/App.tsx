@@ -13,9 +13,14 @@ import {useState} from "react";
 import {Icon24Filter} from "@vkontakte/icons";
 
 const tg = (window as any).Telegram.Webapp
+const params: any = new Proxy(new URLSearchParams(window.location.search), {
+    get: (searchParams, prop) => searchParams.get(prop as string),
+});
 
 function App() {
-    const [coordinates, setCoordinates] = useState<[string, string]>(['', ''])
+    const [coordinates, setCoordinates] = useState<[string, string]>([
+        params?.sector?.split(':')[0].toUpperCase() || '', params?.sector?.split(':')[1].toUpperCase() || ''
+    ])
     const [activeModal, setActiveModal] = useState<string>('main')
     const [showSnackBar, setShowSnackBar] = useState(false)
 
@@ -24,7 +29,7 @@ function App() {
     }
 
     return <div>
-        <ConfigProvider appearance={"light"} platform={Platform.IOS}>
+        <ConfigProvider appearance={"dark"} platform={Platform.IOS}>
             <AdaptivityProvider>
                 <AppRoot>
                     <View activePanel={activeModal}>
