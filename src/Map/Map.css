@@ -21,6 +21,11 @@
     color: #fff;
 }
 
+.selected{
+    background-color: #fff;
+    color: #000;
+}
+
 @media (max-width: 640px) {
     .map>div {
         border: 1px white dashed;

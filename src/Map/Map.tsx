@@ -40,7 +40,12 @@ const Map = ({sector, setCoordinates, playerCoordinates}: props) => {
         {systems.map((x, i) => x.map(((x, j) =>
             {
                 const a = `${sector[0]}${j.toString(16)}:${sector[1]}${i.toString(16)}`.toUpperCase()
+                const selected = playerCoordinates
+                    .split(':')
+                    .map((x, i) => x.slice(0, sector[i].length) === sector[i])
+                    .every(s => s)
                 return <div
+                    className={selected ? 'selected' : ''}
                     key={`${i}:${j}`}
                     onClick={() => {
                         if(sector[0].length === 3 && sector[1].length === 3) {
