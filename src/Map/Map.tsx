@@ -40,10 +40,10 @@ const Map = ({sector, setCoordinates, playerCoordinates}: props) => {
         {systems.map((x, i) => x.map(((x, j) =>
             {
                 const a = `${sector[0]}${j.toString(16)}:${sector[1]}${i.toString(16)}`.toUpperCase()
-                const selected = playerCoordinates
-                    .split(':')
-                    .map((x, i) => x.slice(0, sector[i].length) === sector[i])
-                    .every(s => s)
+                const b = playerCoordinates.toUpperCase().split(':')
+                const selected = b[0].slice(0, sector[0].length) === `${sector[0]}${j.toString(16)}` &&
+                    b[1].slice(0, sector[1].length) === `${sector[0]}${i.toString(16)}` &&
+                    sector[0].length !== 3
                 return <div
                     className={selected ? 'selected' : ''}
                     key={`${i}:${j}`}
