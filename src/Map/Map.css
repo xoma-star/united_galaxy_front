@@ -59,3 +59,21 @@
 .HIDE{
     display: none;
 }
+
+.star.pulse{
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.95);
+    }
+
+    70% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(0.95);
+    }
+}

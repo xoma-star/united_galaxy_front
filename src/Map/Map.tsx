@@ -5,13 +5,14 @@ import axios from "axios";
 
 interface props{
     sector: [string, string],
+    playerCoordinates: string,
     setCoordinates(x: string, y: string): void
 }
 
 //@ts-ignore
 const tg = window.Telegram.WebApp
 
-const Map = ({sector, setCoordinates}: props) => {
+const Map = ({sector, setCoordinates, playerCoordinates}: props) => {
     const [systems, setSystems] = useState<string[][]>([])
 
     useEffect(() => {
@@ -37,36 +38,39 @@ const Map = ({sector, setCoordinates}: props) => {
 
     return <div className={'map'}>
         {systems.map((x, i) => x.map(((x, j) =>
-            <div
-                key={`${i}:${j}`}
-                onClick={() => {
-                    if(sector[0].length === 3 && sector[1].length === 3) {
-                        const a = `${sector[0]}${j.toString(16)}:${sector[1]}${i.toString(16)}`.toUpperCase()
-                        tg.MainButton.setParams({
-                            text: `Информация о системе (${a})`
-                        })
-                        if(x !== 'HIDE'){
-                            tg.MainButton.show()
-                            tg.MainButton.onClick(() => {
-                                console.log(tg.sendData(JSON.stringify({command: 'travel', coordinates: a})))
+            {
+                const a = `${sector[0]}${j.toString(16)}:${sector[1]}${i.toString(16)}`.toUpperCase()
+                return <div
+                    key={`${i}:${j}`}
+                    onClick={() => {
+                        if(sector[0].length === 3 && sector[1].length === 3) {
+
+                            tg.MainButton.setParams({
+                                text: `Информация о системе (${a})${a === playerCoordinates ? ' (вы здесь)' : ''}`
                             })
+                            if(x !== 'HIDE'){
+                                tg.MainButton.show()
+                                tg.MainButton.onClick(() => {
+                                    tg.sendData(JSON.stringify({command: 'travel', coordinates: a}))
+                                })
+                            }
+                            else{
+                                tg.MainButton.hide()
+                            }
                         }
-                        else{
-                            tg.MainButton.hide()
-                        }
-                    }
-                    else setCoordinates(x.split(':')[0].slice(0, 3), x.split(':')[1].slice(0, 3))
-                }}
-            >
-                {x.indexOf(':') > -1 && x}
-                {x.indexOf(':') === -1 && <div
-                    className={'star ' + x}
-                    style={{width: 16,
-                        height: 16,
-                        borderRadius: 9999,
-                        transform: `scale(${(1 + random() * 500 / window.screen.height).toFixed(2)}) translate(${Math.floor(random() * 16 - 8)}px, ${Math.floor(random() * 16 - 8)}px)`
-                }}></div>}
-            </div>
+                        else setCoordinates(x.split(':')[0].slice(0, 3), x.split(':')[1].slice(0, 3))
+                    }}
+                >
+                    {x.indexOf(':') > -1 && x}
+                    {x.indexOf(':') === -1 && <div
+                        className={'star ' + x + (a === playerCoordinates ? ' pulse' : '')}
+                        style={{width: 16,
+                            height: 16,
+                            borderRadius: 9999,
+                            transform: `scale(${(1 + random() * 500 / window.screen.height).toFixed(2)}) translate(${Math.floor(random() * 16 - 8)}px, ${Math.floor(random() * 16 - 8)}px)`
+                        }}></div>}
+                </div>
+            }
         )))}
     </div>
 }

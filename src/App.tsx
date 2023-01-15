@@ -37,7 +37,10 @@ function App() {
                             <PanelHeader before={<PanelHeaderButton onClick={() => setActiveModal('filter')}>
                                 <Icon24Filter/>
                             </PanelHeaderButton>} separator={false}>Галактическая карта</PanelHeader>
-                            <Map sector={coordinates} setCoordinates={(x, y) => setCoordinates([x, y])}/>
+                            <Map
+                                playerCoordinates={params?.coordinates?.toUpperCase()}
+                                sector={coordinates} setCoordinates={(x, y) => setCoordinates([x, y])}
+                            />
                             <Button
                                 size={'l'}
                                 style={{position: "fixed", bottom: 15, width: 'calc(100% - 20px)', marginLeft: 10, marginRight: 10}}
