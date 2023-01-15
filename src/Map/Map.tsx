@@ -41,9 +41,10 @@ const Map = ({sector, setCoordinates, playerCoordinates}: props) => {
             {
                 const a = `${sector[0]}${j.toString(16)}:${sector[1]}${i.toString(16)}`.toUpperCase()
                 const b = playerCoordinates.toUpperCase().split(':')
-                const selected = b[0].slice(0, sector[0].length) === `${sector[0]}${j.toString(16)}` &&
-                    b[1].slice(0, sector[1].length) === `${sector[0]}${i.toString(16)}` &&
-                    sector[0].length !== 3
+                const c = x.split(':')
+                const selected = b[0]?.slice(0, c[0]?.length) === c[0] &&
+                    b[1]?.slice(0, c[1]?.length) === c[1] &&
+                    c[0]?.length !== 4
                 return <div
                     className={selected ? 'selected' : ''}
                     key={`${i}:${j}`}
